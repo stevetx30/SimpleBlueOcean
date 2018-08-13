@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('error') {
+    stage('Build') {
       steps {
-        sh 'echo "hello 2"'
+        pwd(tmp: true)
       }
     }
   }
