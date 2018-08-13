@@ -10,7 +10,7 @@ pipeline {
         }
         stage('') {
           steps {
-            waitForQualityGate false
+            sleep 5
           }
         }
       }
