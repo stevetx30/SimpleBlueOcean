@@ -10,7 +10,7 @@ pipeline {
         }
         stage('') {
           steps {
-            waitForQualityGate true
+            waitForQualityGate false
           }
         }
       }
