@@ -2,8 +2,17 @@ pipeline {
   agent any
   stages {
     stage('dev') {
-      steps {
-        pwd(tmp: true)
+      parallel {
+        stage('dev') {
+          steps {
+            pwd(tmp: true)
+          }
+        }
+        stage('') {
+          steps {
+            waitForQualityGate true
+          }
+        }
       }
     }
     stage('qa') {
