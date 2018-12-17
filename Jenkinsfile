@@ -3,14 +3,25 @@ pipeline {
   stages {
     stage('dev') {
       parallel {
-        stage('dev') {
+        stage('build1') {
           steps {
             pwd(tmp: true)
           }
         }
-        stage('') {
+        stage('build2') {
           steps {
             sleep 5
+            echo 'build2'
+          }
+        }
+        stage('build3') {
+          steps {
+            echo 'build 3...'
+          }
+        }
+        stage('build4') {
+          steps {
+            echo 'build4'
           }
         }
       }
