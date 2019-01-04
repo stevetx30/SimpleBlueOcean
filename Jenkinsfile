@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent any
   stages {
     stage('AWS Setup') {
       steps {
@@ -11,7 +11,7 @@ pipeline {
         stage('Prepare to Publish') {
           steps {
             sh 'echo "stage QA"'
-            node(label: 'myNode1') {
+            node(label: 'any') {
               echo 'hello'
             }
 
