@@ -1,39 +1,58 @@
 pipeline {
   agent any
   stages {
-    stage('dev') {
-      parallel {
-        stage('build1') {
-          steps {
-            pwd(tmp: true)
-          }
-        }
-        stage('build2') {
-          steps {
-            sleep 5
-            echo 'build2'
-          }
-        }
-        stage('build3') {
-          steps {
-            echo 'build 3...'
-          }
-        }
-        stage('build4') {
-          steps {
-            echo 'build4'
-          }
-        }
-      }
-    }
-    stage('qa') {
+    stage('AWS Setup') {
       steps {
-        sh 'echo "stage QA"'
+        pwd(tmp: true)
       }
     }
-    stage('prod') {
+    stage('Prepare to Publish') {
+      parallel {
+        stage('Prepare to Publish') {
+          steps {
+            sh 'echo "stage QA"'
+          }
+        }
+        stage('mcu') {
+          steps {
+            echo 'p1'
+          }
+        }
+        stage('thread') {
+          steps {
+            echo 'p2'
+          }
+        }
+        stage('bgx') {
+          steps {
+            echo 'p3'
+          }
+        }
+        stage('') {
+          steps {
+            echo 'p4'
+          }
+        }
+        stage('') {
+          steps {
+            echo 'p5'
+          }
+        }
+      }
+    }
+    stage('Publish') {
       steps {
         sh 'echo "stage prod"'
+      }
+    }
+    stage('AWS Teardown') {
+      steps {
+        sleep 1
+      }
+    }
+    stage('Notifications') {
+      steps {
+        echo 'done'
       }
     }
   }
